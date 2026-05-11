@@ -1371,11 +1371,17 @@ a { color: inherit; }
 .fld.is-error .error-msg { display: block; }
 
 /* Radio group */
-.radio-group {
+.radio-group,
+.checkbox-group {
   display: grid;
   gap: var(--space-3);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-inline-size: auto;  /* normalize fieldset default */
 }
-.radio-group .group-label {
+.radio-group .group-label,
+.checkbox-group .group-label {
   font-family: var(--font-sans);
   font-size: var(--fs-label);
   font-weight: 500;
@@ -1383,7 +1389,8 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--mago-ink-muted);
 }
-.radio-row {
+.radio-row,
+.checkbox-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2) var(--space-5);
@@ -1420,7 +1427,10 @@ a { color: inherit; }
 }
 .radio span { font-size: var(--fs-body); color: var(--mago-ink); }
 
-@media (max-width: 600px) { .radio-row { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .radio-row,
+  .checkbox-row { grid-template-columns: 1fr; }
+}
 
 /* Checkbox */
 .checkbox {

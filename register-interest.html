@@ -44,13 +44,18 @@
 
       <form
         class="register-form"
-        action="mailto:hello@magoclub.com"
-        method="post"
-        enctype="text/plain"
+        action="https://api.web3forms.com/submit"
+        method="POST"
         aria-labelledby="form-headline"
         novalidate
-        data-prototype="true"
       >
+        <!-- Web3Forms config — public access key (safe to expose; rate-limited per inbox) -->
+        <input type="hidden" name="access_key" value="212a7d89-524b-4f49-aabf-25842f986618" />
+        <input type="hidden" name="subject" value="MAGOCLUB — new private inquiry" />
+        <input type="hidden" name="from_name" value="MAGOCLUB website" />
+        <!-- Tell Web3Forms not to redirect; we handle the response in JS -->
+        <input type="hidden" name="redirect" value="false" />
+
         <header>
           <p class="eyebrow label-tic">Register your interest</p>
           <h2 id="form-headline" class="t-display-m">Introduce yourself.</h2>
@@ -78,31 +83,31 @@
             </div>
           </div>
 
-          <fieldset class="radio-group" aria-labelledby="topic-label">
-            <legend id="topic-label" class="group-label">What brings you to MAGOCLUB? <span style="opacity:0.6; font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></legend>
-            <div class="radio-row">
-              <label class="radio">
-                <input type="radio" name="topic" value="body" />
+          <fieldset class="checkbox-group" aria-labelledby="topic-label">
+            <legend id="topic-label" class="group-label">What brings you to MAGOCLUB? <span style="opacity:0.6; font-weight:400; text-transform:none; letter-spacing:0;">(select all that apply)</span></legend>
+            <div class="checkbox-row">
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="Personal Training (Body)" />
                 <span>Personal Training (Body)</span>
               </label>
-              <label class="radio">
-                <input type="radio" name="topic" value="skill" />
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="Couture Combat (Skill)" />
                 <span>Couture Combat™ (Skill)</span>
               </label>
-              <label class="radio">
-                <input type="radio" name="topic" value="mind" />
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="Wellness Coaching (Mind)" />
                 <span>Wellness Coaching (Mind)</span>
               </label>
-              <label class="radio">
-                <input type="radio" name="topic" value="connection" />
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="The Assembly (Connection)" />
                 <span>The Assembly (Connection)</span>
               </label>
-              <label class="radio">
-                <input type="radio" name="topic" value="partnership" />
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="MAGO House & partnership" />
                 <span>MAGO House &amp; partnership</span>
               </label>
-              <label class="radio">
-                <input type="radio" name="topic" value="other" />
+              <label class="checkbox">
+                <input type="checkbox" name="topic[]" value="Something else" />
                 <span>Something else</span>
               </label>
             </div>
@@ -113,14 +118,15 @@
             <textarea id="f-message" name="message" rows="3" placeholder="A line or two — referrer, timing, context."></textarea>
           </div>
 
-          <!-- Honeypot — bots fill this; humans don't see it -->
+          <!-- Honeypot — Web3Forms reads this field name and silently drops the
+               submission if it's filled. Humans never see it. -->
           <div class="honeypot" aria-hidden="true">
             <label for="f-website">Leave this field empty</label>
-            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            <input id="f-website" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" />
           </div>
 
           <label class="checkbox">
-            <input type="checkbox" name="consent" required aria-required="true" />
+            <input type="checkbox" name="consent" value="Agreed" required aria-required="true" />
             <span>
               I agree to be contacted by MAGOCLUB regarding my inquiry. See our
               <a href="#">Privacy Policy</a>.
@@ -129,9 +135,11 @@
 
           <div class="form-submit">
             <button type="submit" class="btn-submit">
-              Register your interest <span class="arrow" aria-hidden="true">→</span>
+              <span class="btn-submit__label">Register your interest</span>
+              <span class="arrow" aria-hidden="true">→</span>
             </button>
             <p class="small">We reply within five working days.</p>
+            <p class="error-msg form-error" role="alert" style="display:none; color: var(--mago-copper);">Something went wrong. Please try again, or email <a href="mailto:magoconceptt@gmail.com">magoconceptt@gmail.com</a>.</p>
           </div>
         </div>
 
@@ -149,38 +157,95 @@
   <script src="js/include.js"></script>
 
   <script>
-    // ?topic= pre-select for Register Interest
+    // ?topic= pre-select. Supports a single value or a comma-separated list:
+    //   ?topic=body
+    //   ?topic=body,skill
+    // Maps short URL keys to the checkbox VALUES used by the form.
     (function () {
       var params = new URLSearchParams(window.location.search);
       var topic = params.get('topic');
       if (!topic) return;
-      var radio = document.querySelector('input[name="topic"][value="' + topic.replace(/"/g, '') + '"]');
-      if (radio) radio.checked = true;
+      var map = {
+        body: 'Personal Training (Body)',
+        skill: 'Couture Combat (Skill)',
+        mind: 'Wellness Coaching (Mind)',
+        connection: 'The Assembly (Connection)',
+        partnership: 'MAGO House & partnership',
+        other: 'Something else'
+      };
+      topic.split(',').forEach(function (key) {
+        var value = map[key.trim().toLowerCase()];
+        if (!value) return;
+        var box = document.querySelector('input[name="topic[]"][value="' + value.replace(/"/g, '\\"') + '"]');
+        if (box) box.checked = true;
+      });
     })();
 
-    // Form prototype handler — client-side validation + in-place success state
+    // Real submission to Web3Forms (POSTs JSON, handles response in-page).
     (function () {
       var form = document.querySelector('.register-form');
       if (!form) return;
+      var submitBtn = form.querySelector('.btn-submit');
+      var submitLabel = form.querySelector('.btn-submit__label');
+      var formError = form.querySelector('.form-error');
+      var originalLabel = submitLabel ? submitLabel.textContent : 'Register your interest';
+
       form.addEventListener('submit', function (e) {
-        if (form.getAttribute('data-prototype') !== 'true') return;
         e.preventDefault();
+        if (formError) formError.style.display = 'none';
+
+        // Client-side validation
         var name = form.querySelector('#f-name');
         var email = form.querySelector('#f-email');
         var phone = form.querySelector('#f-phone');
         var consent = form.querySelector('input[name="consent"]');
         var ok = true;
-        [[name, 'is-error'], [email, 'is-error'], [phone, 'is-error']].forEach(function (pair) {
-          var fld = pair[0].closest('.fld');
-          if (!pair[0].value || (pair[0].type === 'email' && !/.+@.+\..+/.test(pair[0].value))) {
-            fld.classList.add(pair[1]); ok = false;
+        [name, email, phone].forEach(function (el) {
+          var fld = el.closest('.fld');
+          if (!el.value || (el.type === 'email' && !/.+@.+\..+/.test(el.value))) {
+            fld.classList.add('is-error'); ok = false;
           } else {
-            fld.classList.remove(pair[1]);
+            fld.classList.remove('is-error');
           }
         });
         if (!consent.checked) ok = false;
         if (!ok) return;
-        form.classList.add('is-submitted');
+
+        // Lock submit button while in flight
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitLabel) submitLabel.textContent = 'Sending…';
+
+        var data = new FormData(form);
+        // Web3Forms expects JSON
+        var payload = {};
+        data.forEach(function (value, key) {
+          if (payload[key] !== undefined) {
+            if (!Array.isArray(payload[key])) payload[key] = [payload[key]];
+            payload[key].push(value);
+          } else {
+            payload[key] = value;
+          }
+        });
+
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (json) {
+            if (json && json.success) {
+              form.classList.add('is-submitted');
+            } else {
+              throw new Error((json && json.message) || 'Submission failed');
+            }
+          })
+          .catch(function (err) {
+            console.error('Web3Forms submission error:', err);
+            if (formError) formError.style.display = 'block';
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitLabel) submitLabel.textContent = originalLabel;
+          });
       });
     })();
   </script>
