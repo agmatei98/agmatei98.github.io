@@ -1753,7 +1753,8 @@ a { color: inherit; }
 }
 
 /* Click-blocker + 'Open in Maps' affordance.
-   Sits above the iframe, captures all events. The whole overlay IS the link. */
+   Sits above the iframe, captures all events. The whole overlay IS the link.
+   The overlay itself is static — only the pill below animates on hover. */
 .find-us__open {
   position: absolute;
   inset: 0;
@@ -1763,18 +1764,6 @@ a { color: inherit; }
   justify-content: flex-end;
   padding: var(--space-5);
   text-decoration: none;
-  /* Darker, deeper at rest — espresso wash that sits the map down into the
-     warm palette instead of competing with the cream surface around it. */
-  background:
-    linear-gradient(180deg, rgba(28, 20, 13, 0.22) 0%, rgba(28, 20, 13, 0.48) 100%);
-  transition:
-    background var(--dur-base) var(--ease-considered),
-    backdrop-filter var(--dur-base) var(--ease-considered);
-}
-/* Hover/focus: don't brighten. Pull the rest of the map slightly out of
-   focus and warm it with a copper tint, so the eye lands on the pill. */
-.find-us__open:hover,
-.find-us__open:focus-visible {
   background:
     radial-gradient(ellipse at bottom right, rgba(184, 121, 74, 0.18), transparent 55%),
     linear-gradient(180deg, rgba(28, 20, 13, 0.30) 0%, rgba(28, 20, 13, 0.58) 100%);
