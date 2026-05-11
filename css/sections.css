@@ -1733,14 +1733,95 @@ a { color: inherit; }
   box-shadow: var(--shadow-card);
   background: var(--mago-stage-2); /* fallback while iframe loads */
 }
-.find-us__map iframe {
+.find-us__iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
-  /* Match the brand temperature with a subtle warm filter */
-  filter: saturate(0.85) contrast(1.02);
+  /* Beige theme: sepia base, slight desaturation, hue-rotate to warm the
+     remaining color (away from Google green/blue toward olive/slate),
+     brightness/contrast nudged so it sits well on the cream surface. */
+  filter:
+    sepia(0.45)
+    saturate(0.7)
+    hue-rotate(-12deg)
+    brightness(0.96)
+    contrast(1.04);
+  /* Visual only — interaction is blocked by the overlay below */
+  pointer-events: none;
+}
+
+/* Click-blocker + 'Open in Maps' affordance.
+   Sits above the iframe, captures all events. The whole overlay IS the link. */
+.find-us__open {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--space-5);
+  text-decoration: none;
+  /* Subtle warm tint that strengthens the brand integration with the map.
+     Transparent at rest, slightly more present on hover. */
+  background:
+    linear-gradient(180deg, transparent 60%, rgba(28, 20, 13, 0.18) 100%),
+    radial-gradient(ellipse at 50% 60%, rgba(251, 244, 228, 0.08), transparent 70%);
+  transition: background-color var(--dur-base) var(--ease-considered);
+}
+.find-us__open:hover,
+.find-us__open:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(28, 20, 13, 0.05) 0%, rgba(28, 20, 13, 0.32) 100%);
+}
+.find-us__open:focus-visible {
+  outline: 2px solid var(--mago-copper);
+  outline-offset: 4px;
+}
+
+.find-us__open-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--mago-ink);
+  background: var(--mago-cream);
+  border: 1px solid var(--mago-hairline-copper);
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-5);
+  box-shadow: var(--shadow-card);
+  transition:
+    background-color var(--dur-base) var(--ease-considered),
+    color var(--dur-base) var(--ease-considered),
+    transform var(--dur-base) var(--ease-considered);
+}
+.find-us__open:hover .find-us__open-label,
+.find-us__open:focus-visible .find-us__open-label {
+  background: var(--mago-copper);
+  color: var(--mago-cream);
+  transform: translateY(-2px);
+}
+.find-us__open-label .arrow {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-considered);
+}
+.find-us__open:hover .find-us__open-label .arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .find-us__open-label,
+  .find-us__open-label .arrow {
+    transition: none;
+  }
+  .find-us__open:hover .find-us__open-label {
+    transform: none;
+  }
 }
 
 @media (max-width: 900px) {

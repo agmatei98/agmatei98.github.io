@@ -242,7 +242,7 @@
       <div class="find-us__copy">
         <p class="eyebrow label-tic">Location</p>
         <h2 id="find-headline" class="t-display-m">
-          Find us <span class="italic">here.</span>
+          Find us in the <span class="italic">heart of London.</span>
         </h2>
         <p class="t-body-l">
           For details on how to find us, get in touch.
@@ -251,12 +251,29 @@
       </div>
       <div class="find-us__map">
         <iframe
+          class="find-us__iframe"
           src="https://maps.google.com/maps?q=MagoClub%2C%20London&t=&z=17&ie=UTF8&iwloc=&output=embed"
           title="MAGOCLUB location on Google Maps"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen=""
+          aria-hidden="true"
+          tabindex="-1"
         ></iframe>
+        <!-- Lock interaction: the overlay sits above the iframe and intercepts
+             all clicks, taps, scrolls. The single anchor inside it is the only
+             interactive element — it opens the real map in a new tab. -->
+        <a
+          class="find-us__open"
+          href="https://maps.app.goo.gl/aAP2u1ufRsXRfuZc6"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open MAGOCLUB location in Google Maps (opens in new tab)"
+        >
+          <span class="find-us__open-label">
+            Open in Maps <span class="arrow" aria-hidden="true">↗</span>
+          </span>
+        </a>
       </div>
     </section></div>
 
