@@ -1763,17 +1763,23 @@ a { color: inherit; }
   justify-content: flex-end;
   padding: var(--space-5);
   text-decoration: none;
-  /* Subtle warm tint that strengthens the brand integration with the map.
-     Transparent at rest, slightly more present on hover. */
+  /* Darker, deeper at rest — espresso wash that sits the map down into the
+     warm palette instead of competing with the cream surface around it. */
   background:
-    linear-gradient(180deg, transparent 60%, rgba(28, 20, 13, 0.18) 100%),
-    radial-gradient(ellipse at 50% 60%, rgba(251, 244, 228, 0.08), transparent 70%);
-  transition: background-color var(--dur-base) var(--ease-considered);
+    linear-gradient(180deg, rgba(28, 20, 13, 0.22) 0%, rgba(28, 20, 13, 0.48) 100%);
+  transition:
+    background var(--dur-base) var(--ease-considered),
+    backdrop-filter var(--dur-base) var(--ease-considered);
 }
+/* Hover/focus: don't brighten. Pull the rest of the map slightly out of
+   focus and warm it with a copper tint, so the eye lands on the pill. */
 .find-us__open:hover,
 .find-us__open:focus-visible {
   background:
-    linear-gradient(180deg, rgba(28, 20, 13, 0.05) 0%, rgba(28, 20, 13, 0.32) 100%);
+    radial-gradient(ellipse at bottom right, rgba(184, 121, 74, 0.18), transparent 55%),
+    linear-gradient(180deg, rgba(28, 20, 13, 0.30) 0%, rgba(28, 20, 13, 0.58) 100%);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 .find-us__open:focus-visible {
   outline: 2px solid var(--mago-copper);
