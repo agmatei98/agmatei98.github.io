@@ -1835,3 +1835,141 @@ a { color: inherit; }
   .find-us__map { aspect-ratio: 4 / 3; }
 }
 
+/* =========================================================
+   20 · REVIEWS — homepage preview (typically on stage-2)
+   Three editorial review cards in a row, with overall rating
+   eyebrow and a 'Read all reviews' CTA below.
+   ========================================================= */
+.reviews {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-10) var(--gutter);
+  display: grid;
+  gap: var(--space-9);
+}
+.reviews__head {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+.reviews__head h2 {
+  margin: 0;
+  max-width: 22ch;
+  color: var(--mago-cream);
+}
+.reviews__rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+.reviews__stars {
+  font-size: 1.25rem;
+  letter-spacing: 0.18em;
+  color: var(--mago-copper);
+  line-height: 1;
+}
+.reviews__rating-text {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--mago-cream-2);
+  opacity: 0.7;
+}
+
+/* Grid of cards */
+.reviews__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+@media (max-width: 1000px) {
+  .reviews__grid { grid-template-columns: 1fr; gap: var(--space-4); max-width: 56ch; margin: 0 auto; }
+}
+
+.review-card {
+  background: var(--mago-stage);
+  border: 1px solid var(--mago-hairline-cream);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+  position: relative;
+  transition: border-color var(--dur-base) var(--ease-considered);
+}
+.review-card:hover {
+  border-color: var(--mago-hairline-copper);
+}
+.review-card__stars {
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  color: var(--mago-copper);
+  line-height: 1;
+}
+.review-card__body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--mago-cream);
+  margin: 0;
+  max-width: 36ch;
+  position: relative;
+}
+.review-card__body::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.4em;
+  top: -0.15em;
+  color: var(--mago-copper);
+  font-style: normal;
+  font-size: 1.5em;
+  line-height: 1;
+}
+.review-card__attr {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--mago-hairline-cream);
+}
+.review-card__name {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--mago-cream-2);
+  opacity: 0.85;
+}
+.review-card__via {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--mago-cream-2);
+  opacity: 0.5;
+  margin-left: auto;
+}
+
+/* Screen-reader-only helper */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.reviews__cta {
+  display: flex;
+  justify-content: center;
+}
+
