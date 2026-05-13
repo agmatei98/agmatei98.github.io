@@ -234,6 +234,20 @@ a { color: inherit; }
   flex-wrap: wrap;
 }
 @media (max-width: 720px) {
+  /* Tighter top padding + stack the eyebrow/meta row instead of
+     space-between, so the two labels don't get squeezed to viewport edges. */
+  .hero-cinematic .frame {
+    padding: var(--space-8) var(--gutter) var(--space-7);
+    gap: var(--space-6);
+  }
+  .hero-cinematic .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .hero-cinematic .top .meta {
+    text-align: left;
+  }
   .hero-cinematic .bottom { grid-template-columns: 1fr; }
   .hero-cinematic .ctas { justify-content: flex-start; }
 }
@@ -280,6 +294,12 @@ a { color: inherit; }
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
+/* Centered CTA below the 4-up grid. Flex centers reliably across browsers
+   regardless of whether the child is inline-flex or inline. */
+.pillars__bottom-cta {
+  display: flex;
+  justify-content: center;
+}
 .pillars .head {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -322,7 +342,17 @@ a { color: inherit; }
 /* Mirror the .more link's underline-draw on the card as a whole, so
    the affordance is visible even when the cursor is over the image. */
 .pillars .card:hover .more::before { transform: scaleX(1.06); }
-.pillars .card .body { padding: var(--space-5) var(--space-1) 0; }
+/* Body region takes the remaining vertical space below the image, so all
+   cards in a row become the same height. The .more link is pushed to the
+   bottom of that region via margin-top: auto — so 'Read more' lines up
+   across every card regardless of how many lines of body copy each has. */
+.pillars .card .body {
+  padding: var(--space-5) var(--space-1) 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .pillars .card .num {
   font-family: var(--font-mono);
   font-size: var(--fs-body-s);
@@ -333,7 +363,8 @@ a { color: inherit; }
 .pillars .card h3 { margin: var(--space-3) 0 var(--space-3); }
 .pillars .card p { color: var(--mago-ink-muted); max-width: 36ch; }
 .pillars .card .more {
-  margin-top: var(--space-5);
+  margin-top: auto;        /* push to the bottom of .body */
+  padding-top: var(--space-5);
   --_color: var(--mago-ink);
 }
 @media (max-width: 900px) {
