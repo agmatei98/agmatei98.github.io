@@ -1840,6 +1840,7 @@ a { color: inherit; }
    Three editorial review cards in a row, with overall rating
    eyebrow and a 'Read all reviews' CTA below.
    ========================================================= */
+/* Outer container — same padding pattern as .editorial / .testimonial */
 .reviews {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -1847,25 +1848,35 @@ a { color: inherit; }
   display: grid;
   gap: var(--space-9);
 }
+
+/* Section header — split layout like .sec-head--split, left-aligned to
+   match the rest of the site. Eyebrow + headline left, rating right. */
 .reviews__head {
   display: grid;
-  justify-items: center;
-  text-align: center;
-  gap: var(--space-3);
+  grid-template-columns: 1fr auto;
+  gap: var(--space-5) var(--space-7);
+  align-items: end;
+  text-align: left;
+}
+.reviews__head .label-tic {
+  grid-column: 1 / 2;
+  margin: 0;
 }
 .reviews__head h2 {
+  grid-column: 1 / 2;
   margin: 0;
   max-width: 22ch;
-  color: var(--mago-cream);
 }
 .reviews__rating {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  align-self: end;
   display: inline-flex;
   align-items: baseline;
   gap: var(--space-3);
-  margin-top: var(--space-2);
 }
 .reviews__stars {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: 0.18em;
   color: var(--mago-copper);
   line-height: 1;
@@ -1879,6 +1890,17 @@ a { color: inherit; }
   color: var(--mago-cream-2);
   opacity: 0.7;
 }
+@media (max-width: 720px) {
+  .reviews__head {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .reviews__rating {
+    grid-column: 1 / 2;
+    grid-row: auto;
+    margin-top: var(--space-2);
+  }
+}
 
 /* Grid of cards */
 .reviews__grid {
@@ -1890,54 +1912,63 @@ a { color: inherit; }
   gap: var(--space-5);
 }
 @media (max-width: 1000px) {
-  .reviews__grid { grid-template-columns: 1fr; gap: var(--space-4); max-width: 56ch; margin: 0 auto; }
+  .reviews__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
 }
 
+/* Review card — quiet, deeper stage background so it lifts off the
+   stage-2 band the section sits on. Generous padding to match the
+   .tier / .subcard pattern. */
 .review-card {
   background: var(--mago-stage);
   border: 1px solid var(--mago-hairline-cream);
   border-radius: var(--radius-card);
-  padding: var(--space-6);
-  display: grid;
-  gap: var(--space-4);
-  position: relative;
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
   transition: border-color var(--dur-base) var(--ease-considered);
 }
 .review-card:hover {
   border-color: var(--mago-hairline-copper);
 }
 .review-card__stars {
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 0.18em;
   color: var(--mago-copper);
   line-height: 1;
 }
+/* Quote body — Fraunces italic. No max-width: the card itself is the
+   width constraint. Body line-height matches --lh-body for parity with
+   the rest of the brand. */
 .review-card__body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.125rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--mago-cream);
   margin: 0;
-  max-width: 36ch;
-  position: relative;
 }
+/* Inline copper opening quote glyph — sits as a prefix INSIDE the card
+   padding, not floating outside it. */
 .review-card__body::before {
   content: "\201C";
-  position: absolute;
-  left: -0.4em;
-  top: -0.15em;
+  display: inline;
+  margin-right: 0.1em;
   color: var(--mago-copper);
   font-style: normal;
-  font-size: 1.5em;
-  line-height: 1;
 }
 .review-card__attr {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
   gap: var(--space-3);
   margin-top: auto;
-  padding-top: var(--space-4);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--mago-hairline-cream);
 }
 .review-card__name {
@@ -1954,7 +1985,6 @@ a { color: inherit; }
   font-size: var(--fs-body-s);
   color: var(--mago-cream-2);
   opacity: 0.5;
-  margin-left: auto;
 }
 
 /* Screen-reader-only helper */
@@ -1971,5 +2001,6 @@ a { color: inherit; }
 .reviews__cta {
   display: flex;
   justify-content: center;
+  margin-top: var(--space-3);
 }
 
