@@ -302,6 +302,14 @@ a { color: inherit; }
   display: flex;
   flex-direction: column;
 }
+/* Image is wrapped in a separate anchor (.card-image-link) that fills
+   the .pic box. The link is aria-hidden + tabindex=-1 so screen readers
+   announce a single accessible link per card (the "Read more →" below). */
+.card-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .pillars .card .pic {
   aspect-ratio: 3 / 4;
   overflow: hidden;
@@ -309,7 +317,11 @@ a { color: inherit; }
   border: 1px solid var(--mago-hairline-copper);
 }
 .pillars .card .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-considered); }
+.pillars .card:hover { cursor: pointer; }
 .pillars .card:hover .pic img { transform: scale(1.03); }
+/* Mirror the .more link's underline-draw on the card as a whole, so
+   the affordance is visible even when the cursor is over the image. */
+.pillars .card:hover .more::before { transform: scaleX(1.06); }
 .pillars .card .body { padding: var(--space-5) var(--space-1) 0; }
 .pillars .card .num {
   font-family: var(--font-mono);
@@ -2008,5 +2020,54 @@ a { color: inherit; }
   display: flex;
   justify-content: center;
   margin-top: var(--space-3);
+}
+
+/* =========================================================
+   21 · PRESS STRIP — slim "As featured in" band
+   Black-on-transparent logos are filtered to white and softened
+   so they read as a quiet credibility note, not a sponsor wall.
+   ========================================================= */
+.press-strip {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-8) var(--gutter);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+.press-strip__eyebrow {
+  color: var(--mago-cream-2);
+  opacity: 0.7;
+  margin: 0;
+}
+.press-strip__logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-9);
+}
+.press-logo {
+  display: block;
+  width: auto;
+  /* Cap height so logos of different aspect ratios stay visually balanced */
+  max-height: 56px;
+  /* Black source PNG → muted white */
+  filter: invert(1) brightness(0.95);
+  opacity: 0.6;
+  transition: opacity var(--dur-base) var(--ease-considered);
+}
+.press-logo:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .press-strip { padding: var(--space-7) var(--gutter); }
+  .press-strip__logos { gap: var(--space-7); }
+  .press-logo { max-height: 44px; }
 }
 
