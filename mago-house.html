@@ -29,7 +29,7 @@
          1 · TYPE HERO — full-bleed atmosphere
          ===================================================================== -->
     <section class="type-hero" aria-labelledby="hero-headline">
-      <div class="bg" aria-hidden="true">
+      <div class="bg" aria-hidden="true" data-kenburns>
         <img
           src="images/New Images/morgan-petroski-rx6wXNsXUOE-unsplash.jpg"
           alt=""
@@ -40,7 +40,7 @@
       </div>
       <div class="scrim" aria-hidden="true"></div>
 
-      <div class="frame">
+      <div class="frame" data-reveal-load>
         <p class="eyebrow label-tic">MAGO House · Marylebone · Coming soon</p>
         <h1 id="hero-headline" class="t-display-xl">
           Beyond the training,<br/>
@@ -62,7 +62,7 @@
          2 · THE VISION — editorial reverse · CREAM
          ===================================================================== -->
     <div class="band band--cream"><section class="editorial editorial--reverse" aria-labelledby="vision-headline">
-      <figure>
+      <figure data-reveal="rise-long">
         <img
           src="images/pexels-cottonbro-4752861.jpg"
           alt="A figure mid-session in a dimly lit, brick-walled studio — placeholder atmosphere for MAGO House."
@@ -71,7 +71,7 @@
         />
         <figcaption>The Vision · MAGO House</figcaption>
       </figure>
-      <div class="copy">
+      <div class="copy" data-reveal="rise">
         <p class="label-tic">The Vision</p>
         <h2 id="vision-headline" class="t-display-m">
           A sanctuary where discipline <span class="italic">meets elegance.</span>
@@ -90,30 +90,30 @@
          3 · CLOSER STATEMENT · TINTED
          ===================================================================== -->
     <div class="band band--tinted"><section class="statement" aria-labelledby="closer-headline">
-      <p class="eyebrow label-tic">In motion</p>
-      <h2 id="closer-headline" class="t-display-m">
+      <p class="eyebrow label-tic" data-reveal="fade">In motion</p>
+      <h2 id="closer-headline" class="t-display-m" data-reveal="rise-soft">
         The evolution is <span class="italic">in motion.</span>
       </h2>
-      <p class="t-body-l">
+      <p class="t-body-l" data-reveal="rise">
         For inquiries regarding our expansion or to join the inner circle,
         contact us directly.
       </p>
-      <span class="rule" aria-hidden="true"></span>
+      <span class="rule" aria-hidden="true" data-reveal="rule"></span>
     </section></div>
 
     <!-- =====================================================================
          4 · APPLY CTA BAND — partnership-flavored
          ===================================================================== -->
     <section class="apply-band" aria-labelledby="apply-headline">
-      <p class="label-tic">Strategic partnership</p>
-      <h2 id="apply-headline" class="t-display-l">
+      <p class="label-tic" data-reveal="fade">Strategic partnership</p>
+      <h2 id="apply-headline" class="t-display-l" data-reveal="rise-soft">
         Open to <span class="italic">dialogue.</span>
       </h2>
-      <p class="t-body-l">
+      <p class="t-body-l" data-reveal="rise">
         For partners and visionaries shaping the next decade of high-fidelity
         living. Reply within five working days.
       </p>
-      <div class="actions">
+      <div class="actions" data-reveal="rise">
         <a href="register-interest.html?topic=partnership" class="btn btn--filled">Strategic partnership inquiries</a>
         <a href="about.html" class="btn btn--ghost">About the architect <span class="arrow" aria-hidden="true">→</span></a>
       </div>
@@ -123,5 +123,6 @@
 
   <div data-include="partials/footer.html"></div>
   <script src="js/include.js"></script>
+  <script src="js/reveal.js"></script>
 </body>
 </html>

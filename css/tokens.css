@@ -74,9 +74,17 @@
 
   /* ---------- Motion ---------- */
   --ease-considered: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-fast:    160ms;
-  --dur-base:    240ms;
-  --dur-slow:    420ms;
+  --dur-fast:    600ms;
+  --dur-base:    1200ms;
+  --dur-slow:    2000ms;
+
+  /* Scroll/load reveal — slow, languid, considered. */
+  --dur-reveal:       3200ms;
+  --dur-reveal-long:  4000ms;
+  --reveal-distance:  28px;
+  --reveal-stagger:   180ms;
+  --reveal-kenburns:  8000ms;
+  --ease-reveal:      cubic-bezier(0.16, 1, 0.3, 1);
 
   /* ---------- Elevation (used sparingly) ---------- */
   --shadow-card: 0 24px 48px -24px rgba(28, 20, 13, 0.35);

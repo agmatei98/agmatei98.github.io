@@ -29,7 +29,7 @@
          1 · HERO — split editorial
          ===================================================================== -->
     <section class="hero-split" aria-labelledby="hero-headline">
-      <div class="image">
+      <div class="image" data-reveal="fade">
         <img
           src="../images/New Images/john-arano-h4i9G-de7Po-unsplash.jpg"
           alt="A woman lifting a barbell overhead, photographed from behind in a low-light studio."
@@ -38,7 +38,7 @@
           decoding="async"
         />
       </div>
-      <div class="copy">
+      <div class="copy" data-reveal-load>
         <p class="label-tic">Pillar I · Body</p>
         <h1 id="hero-headline" class="t-display-l">
           Strength. Structure. <span class="italic">Longevity.</span>
@@ -58,7 +58,7 @@
     <!-- =====================================================================
          2 · THE FOUNDATION — section header + lede
          ===================================================================== -->
-    <header class="sec-head sec-head--split" id="foundation">
+    <header class="sec-head sec-head--split" id="foundation" data-reveal="rise">
       <div>
         <p class="eyebrow label-tic">The Foundation</p>
         <h2 class="title t-display-m">
@@ -76,7 +76,7 @@
     <!-- =====================================================================
          3 · NUMBERED LIST — three pillars of the method · CREAM
          ===================================================================== -->
-    <div class="band band--cream"><ol class="numbered-list" role="list">
+    <div class="band band--cream"><ol class="numbered-list" role="list" data-reveal-stagger>
       <li class="numbered-card">
         <div class="num">01</div>
         <div class="body">
@@ -124,7 +124,7 @@
          4 · STUDIO DETAIL — small editorial moment · STAGE-2
          ===================================================================== -->
     <div class="band band--stage-2"><section class="editorial editorial--reverse" aria-labelledby="studio-headline">
-      <figure>
+      <figure data-reveal="rise-long">
         <img
           src="../images/New Images/danielle-cerullo-CQfNt66ttZM-unsplash.jpg"
           alt="The MAGOCLUB studio — racks of dumbbells, a member training in soft daylight at the far end."
@@ -133,7 +133,7 @@
         />
         <figcaption>The Studio · Marylebone</figcaption>
       </figure>
-      <div class="copy">
+      <div class="copy" data-reveal="rise">
         <p class="label-tic">The Studio</p>
         <h2 id="studio-headline" class="t-display-m">
           A space designed for <span class="italic">precision.</span>
@@ -150,16 +150,16 @@
          5 · APPLY CTA BAND
          ===================================================================== -->
     <section class="apply-band" aria-labelledby="apply-headline">
-      <p class="label-tic">Membership</p>
-      <h2 id="apply-headline" class="t-display-l">
+      <p class="label-tic" data-reveal="fade">Membership</p>
+      <h2 id="apply-headline" class="t-display-l" data-reveal="rise-soft">
         By private inquiry.<br/>
         <span class="italic">Always.</span>
       </h2>
-      <p class="t-body-l">
+      <p class="t-body-l" data-reveal="rise">
         A short conversation, before any commitment. We reply within five
         working days.
       </p>
-      <div class="actions">
+      <div class="actions" data-reveal="rise">
         <a href="../register-interest.html?topic=body" class="btn btn--filled">Register your interest</a>
         <a href="index.html" class="btn btn--ghost">All four pillars <span class="arrow" aria-hidden="true">→</span></a>
       </div>
@@ -169,5 +169,6 @@
 
   <div data-include="../partials/footer.html"></div>
   <script src="../js/include.js"></script>
+  <script src="../js/reveal.js"></script>
 </body>
 </html>

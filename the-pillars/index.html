@@ -28,7 +28,7 @@
     <!-- =====================================================================
          1 · SECTION HEADER (top of page)
          ===================================================================== -->
-    <header class="sec-head sec-head--split">
+    <header class="sec-head sec-head--split" data-reveal-load>
       <div>
         <p class="eyebrow label-tic">The Four Pillars</p>
         <h1 class="title t-display-l">
@@ -51,7 +51,7 @@
           <h2 id="pillars-headline">The Four Pillars</h2>
         </header>
 
-        <div class="grid" role="list">
+        <div class="grid" role="list" data-reveal-stagger>
           <article class="card" role="listitem">
             <div class="pic">
               <a href="body.html" class="card-image-link" tabindex="-1" aria-hidden="true">
@@ -133,16 +133,16 @@
          3 · APPLY CTA BAND
          ===================================================================== -->
     <section class="apply-band" aria-labelledby="apply-headline">
-      <p class="label-tic">Membership</p>
-      <h2 id="apply-headline" class="t-display-l">
+      <p class="label-tic" data-reveal="fade">Membership</p>
+      <h2 id="apply-headline" class="t-display-l" data-reveal="rise-soft">
         By private inquiry.<br/>
         <span class="italic">Always.</span>
       </h2>
-      <p class="t-body-l">
+      <p class="t-body-l" data-reveal="rise">
         A short conversation, before any commitment. We reply within five
         working days.
       </p>
-      <div class="actions">
+      <div class="actions" data-reveal="rise">
         <a href="../register-interest.html" class="btn btn--filled">Register your interest</a>
         <a href="../about.html" class="btn btn--ghost">About the architect <span class="arrow" aria-hidden="true">→</span></a>
       </div>
@@ -152,5 +152,6 @@
 
   <div data-include="../partials/footer.html"></div>
   <script src="../js/include.js"></script>
+  <script src="../js/reveal.js"></script>
 </body>
 </html>

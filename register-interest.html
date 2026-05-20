@@ -27,7 +27,7 @@
   <main id="main">
 
     <section class="form-page" id="register" aria-labelledby="register-headline">
-      <div class="lhs">
+      <div class="lhs" data-reveal-load>
         <p class="label-tic">By private inquiry</p>
         <h1 id="register-headline" class="t-display-m">
           A short conversation, <span class="italic">before any commitment.</span>
@@ -56,7 +56,7 @@
         <!-- Tell Web3Forms not to redirect; we handle the response in JS -->
         <input type="hidden" name="redirect" value="false" />
 
-        <header>
+        <header data-reveal="rise">
           <p class="eyebrow label-tic">Register your interest</p>
           <h2 id="form-headline" class="t-display-m">Introduce yourself.</h2>
           <p>We reply within five working days. Your details are never shared.</p>
@@ -155,6 +155,7 @@
 
   <div data-include="partials/footer.html"></div>
   <script src="js/include.js"></script>
+  <script src="js/reveal.js"></script>
 
   <script>
     // ?topic= pre-select. Supports a single value or a comma-separated list:

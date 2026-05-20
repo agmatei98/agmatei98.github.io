@@ -29,7 +29,7 @@
          1 · HERO — split editorial
          ===================================================================== -->
     <section class="hero-split" aria-labelledby="hero-headline">
-      <div class="image">
+      <div class="image" data-reveal="fade">
         <img
           src="../images/pexels-shvets-production-7561259.jpg"
           alt="A woman in a single-leg stance in a bright studio, framed by foreground foliage."
@@ -38,7 +38,7 @@
           decoding="async"
         />
       </div>
-      <div class="copy">
+      <div class="copy" data-reveal-load>
         <p class="label-tic">Pillar III · Mind</p>
         <h1 id="hero-headline" class="t-display-l">
           The Internal <span class="italic">Architecture.</span>
@@ -59,7 +59,7 @@
     <!-- =====================================================================
          2 · THE BIOLOGICAL BUDGET — section header + 3-up subcards
          ===================================================================== -->
-    <header class="sec-head sec-head--split" id="budget">
+    <header class="sec-head sec-head--split" id="budget" data-reveal="rise">
       <div>
         <p class="eyebrow label-tic">The Biological Budget</p>
         <h2 class="title t-display-m">
@@ -74,7 +74,7 @@
     </header>
 
     <div class="subcards subcards--3">
-      <div class="grid" role="list">
+      <div class="grid" role="list" data-reveal-stagger>
         <article class="subcard" role="listitem">
           <span class="num">01 · Stress</span>
           <h3 class="t-h2">Stress Management</h3>
@@ -105,7 +105,7 @@
     <!-- =====================================================================
          3 · NOURISHMENT & MENTAL FREEDOM — section header + 2-up subcards · CREAM
          ===================================================================== -->
-    <div class="band band--cream"><header class="sec-head sec-head--split">
+    <div class="band band--cream"><header class="sec-head sec-head--split" data-reveal="rise">
       <div>
         <p class="eyebrow label-tic">Nourishment &amp; Mental Freedom</p>
         <h2 class="title t-display-m">
@@ -119,7 +119,7 @@
     </header>
 
     <div class="subcards subcards--2">
-      <div class="grid" role="list">
+      <div class="grid" role="list" data-reveal-stagger>
         <article class="subcard" role="listitem">
           <span class="num">04 · Joy</span>
           <h3 class="t-h2">The Joy of Food</h3>
@@ -144,7 +144,7 @@
          4 · THE MINDSET OF COMMAND — editorial reverse · STAGE-2
          ===================================================================== -->
     <div class="band band--stage-2"><section class="editorial editorial--reverse" aria-labelledby="command-headline">
-      <figure>
+      <figure data-reveal="rise-long">
         <img
           src="../images/New Images/christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash.jpg"
           alt="Two women in conversation across a small table, daylight from a window."
@@ -153,7 +153,7 @@
         />
         <figcaption>The Mindset of Command</figcaption>
       </figure>
-      <div class="copy">
+      <div class="copy" data-reveal="rise">
         <p class="label-tic">The Mindset of Command</p>
         <h2 id="command-headline" class="t-display-m">
           Lead your life <span class="italic">with intention.</span>
@@ -180,15 +180,15 @@
          5 · APPLY CTA BAND
          ===================================================================== -->
     <section class="apply-band" aria-labelledby="apply-headline">
-      <p class="label-tic">Membership</p>
-      <h2 id="apply-headline" class="t-display-l">
+      <p class="label-tic" data-reveal="fade">Membership</p>
+      <h2 id="apply-headline" class="t-display-l" data-reveal="rise-soft">
         Apply for <span class="italic">access.</span>
       </h2>
-      <p class="t-body-l">
+      <p class="t-body-l" data-reveal="rise">
         A short conversation, before any commitment. We reply within five
         working days.
       </p>
-      <div class="actions">
+      <div class="actions" data-reveal="rise">
         <a href="../register-interest.html?topic=mind" class="btn btn--filled">Apply for access</a>
         <a href="index.html" class="btn btn--ghost">All four pillars <span class="arrow" aria-hidden="true">→</span></a>
       </div>
@@ -198,5 +198,6 @@
 
   <div data-include="../partials/footer.html"></div>
   <script src="../js/include.js"></script>
+  <script src="../js/reveal.js"></script>
 </body>
 </html>

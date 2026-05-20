@@ -277,8 +277,13 @@ a { color: inherit; }
 .hero-split .ctas { display: flex; gap: var(--space-9); flex-wrap: wrap; margin-top: var(--space-3); }
 
 @media (max-width: 900px) {
-  .hero-split { grid-template-columns: 1fr; }
+  .hero-split {
+    grid-template-columns: 1fr;
+    padding: var(--space-8) var(--gutter) var(--space-7);
+    gap: var(--space-7);
+  }
   .hero-split .image { aspect-ratio: 4 / 3; }
+  .hero-split .copy { justify-content: flex-start; }
 }
 
 /* =========================================================
@@ -676,6 +681,90 @@ a { color: inherit; }
 }
 
 /* =========================================================
+   REVEALS — entrance animations on scroll / load
+   Initial state set here; .is-visible flips it. JS adds the
+   class via IntersectionObserver, with a safety timeout so
+   content is never trapped invisible if JS fails.
+   ========================================================= */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity var(--dur-reveal) var(--ease-reveal),
+    transform var(--dur-reveal) var(--ease-reveal);
+  will-change: opacity, transform;
+}
+[data-reveal="fade"]      { transform: none; }
+[data-reveal="rise"]      { transform: translateY(var(--reveal-distance)); }
+[data-reveal="rise-soft"] { transform: translateY(calc(var(--reveal-distance) * 0.5)); }
+[data-reveal="rise-long"] {
+  transform: translateY(var(--reveal-distance));
+  transition-duration: var(--dur-reveal-long);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered children — each direct child reveals after the previous. */
+[data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--dur-reveal) var(--ease-reveal),
+    transform var(--dur-reveal) var(--ease-reveal);
+  will-change: opacity, transform;
+}
+[data-reveal-stagger].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: calc(var(--reveal-stagger) * 1); }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: calc(var(--reveal-stagger) * 2); }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: calc(var(--reveal-stagger) * 3); }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: calc(var(--reveal-stagger) * 4); }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: calc(var(--reveal-stagger) * 5); }
+[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay: calc(var(--reveal-stagger) * 6); }
+[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay: calc(var(--reveal-stagger) * 7); }
+
+/* Drawing rule — the hairline under .statement. Grows from the left. */
+[data-reveal="rule"] {
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 1;
+  transition: transform var(--dur-reveal-long) var(--ease-reveal);
+}
+[data-reveal="rule"].is-visible { transform: scaleX(1); }
+
+/* Hero load cascade — fires on page load, not on scroll. Each child
+   waits longer than the last. Applied via [data-reveal-load]. */
+[data-reveal-load] > * {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--dur-reveal-long) var(--ease-reveal),
+    transform var(--dur-reveal-long) var(--ease-reveal);
+}
+[data-reveal-load].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal-load].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+[data-reveal-load].is-visible > *:nth-child(2) { transition-delay: 200ms; }
+[data-reveal-load].is-visible > *:nth-child(3) { transition-delay: 500ms; }
+[data-reveal-load].is-visible > *:nth-child(4) { transition-delay: 700ms; }
+[data-reveal-load].is-visible > *:nth-child(5) { transition-delay: 900ms; }
+
+/* Ken Burns — gentle 1.05 → 1.0 zoom on hero background images.
+   Applied to the .bg img inside any [data-kenburns] container. */
+[data-kenburns] img {
+  transform: scale(1.05);
+  transition: transform var(--reveal-kenburns) var(--ease-reveal);
+  will-change: transform;
+}
+[data-kenburns].is-visible img { transform: scale(1); }
+
+/* =========================================================
    REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
@@ -687,6 +776,17 @@ a { color: inherit; }
   .pillars .card:hover .pic img { transform: none; }
   .btn:hover .arrow { transform: none; }
   .btn--primary:hover::before { transform: scaleX(1); }
+
+  /* Reveals collapse to instant — visible, no transform, no delay. */
+  [data-reveal],
+  [data-reveal-stagger] > *,
+  [data-reveal-load] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  [data-reveal="rule"] { transform: scaleX(1) !important; }
+  [data-kenburns] img { transform: none !important; }
 }
 
 /* =========================================================
