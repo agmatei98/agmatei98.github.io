@@ -1920,8 +1920,6 @@ a { color: inherit; }
   background:
     radial-gradient(ellipse at bottom right, rgba(184, 121, 74, 0.18), transparent 55%),
     linear-gradient(180deg, rgba(28, 20, 13, 0.30) 0%, rgba(28, 20, 13, 0.58) 100%);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
 }
 .find-us__open:focus-visible {
   outline: 2px solid var(--mago-copper);
