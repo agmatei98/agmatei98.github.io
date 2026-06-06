@@ -624,6 +624,18 @@ a { color: inherit; }
   aspect-ratio: 3 / 4;
 }
 .testimonial figure img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) brightness(0.92); }
+
+/* Centered variant — single column, no image. The quote sits centered with
+   the quotation mark inset preserved. */
+.testimonial--centered {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+.testimonial--centered blockquote { max-width: 28ch; margin-inline: auto; }
+.testimonial--centered blockquote::before { left: -0.4em; }
+.testimonial--centered .attribution { justify-content: center; }
+
 @media (max-width: 900px) {
   .testimonial { grid-template-columns: 1fr; }
 }
@@ -1247,12 +1259,38 @@ a { color: inherit; }
               visibility var(--dur-base) var(--ease-considered),
               transform var(--dur-base) var(--ease-considered);
 }
+/* Invisible bridge across the gap between trigger and panel so a hover
+   sweep from button to menu doesn't pass through dead space and close it. */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: calc(var(--space-3) + 2px);
+}
 .has-dropdown [aria-expanded="true"] + .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
-.dropdown a {
+
+/* Desktop: open on hover / keyboard focus, not just click.
+   Scoped to a hover-capable pointer so touch devices keep tap-to-open. */
+@media (hover: hover) and (min-width: 861px) {
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .has-dropdown:hover .caret,
+  .has-dropdown:focus-within .caret { transform: rotate(225deg) translateY(0); }
+  /* Keep the trigger highlighted while the menu is open via hover */
+  .site-nav .primary .has-dropdown:hover button,
+  .site-nav .primary .has-dropdown:focus-within button { color: var(--mago-cream); opacity: 1; }
+}
+.site-nav .primary .dropdown a {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   font-weight: 400;
@@ -1269,7 +1307,7 @@ a { color: inherit; }
   transition: background-color var(--dur-base) var(--ease-considered);
   opacity: 1;
 }
-.dropdown a:hover { background: var(--mago-cream-3); color: var(--mago-ink); opacity: 1; }
+.site-nav .primary .dropdown a:hover { background: var(--mago-cream-3); color: var(--mago-ink); opacity: 1; }
 .dropdown a .roman-num {
   font-family: var(--font-serif);
   font-style: italic;
