@@ -477,6 +477,70 @@ a { color: inherit; }
 }
 
 /* =========================================================
+   5b · CREDENTIALS (hairline-divided list on cream)
+   Title + issuing body, modelled as a <dl>. Echoes the
+   .stats strip — typographic, no card fills.
+   ========================================================= */
+.creds {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-9) var(--gutter);
+}
+.creds .head {
+  margin-bottom: var(--space-8);
+  max-width: 52ch;
+}
+.creds .head .label-tic { color: var(--mago-copper-soft); }
+.creds .head h2 { color: var(--mago-ink); margin-top: var(--space-3); max-width: 20ch; }
+.creds .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* hairline gutters between cells via gap + cell borders */
+  gap: 1px;
+  background: var(--mago-hairline-copper);
+  border: 1px solid var(--mago-hairline-copper);
+}
+.cred {
+  background: var(--mago-cream);
+  padding: var(--space-6) var(--space-6) var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.cred dt {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--mago-copper);
+  margin: 0;
+}
+.cred dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: var(--lh-tight);
+  color: var(--mago-ink);
+}
+.cred .issuer {
+  margin-top: auto;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-s);
+  color: var(--mago-ink-muted);
+}
+.cred .issuer::before {
+  content: "— ";
+  color: var(--mago-copper);
+}
+@media (max-width: 900px) {
+  .creds .grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .creds .grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
    6 · MEMBERSHIP TIERS (cream cards on dark stage)
    ========================================================= */
 .tiers {
