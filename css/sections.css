@@ -1439,6 +1439,9 @@ a { color: inherit; }
 .nav-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span::after  { top: 0; transform: rotate(-45deg); }
 
+/* Lock page scroll while the mobile drawer is open. */
+html.nav-locked, html.nav-locked body { overflow: hidden; }
+
 /* Mobile drawer */
 @media (max-width: 900px) {
   .site-nav .frame { grid-template-columns: auto 1fr auto; }
@@ -1450,21 +1453,30 @@ a { color: inherit; }
   .site-nav.is-open .nav-cta {
     display: flex;
   }
+  /* Open drawer becomes a full-height overlay that scrolls internally,
+     so a tall menu can't leak scroll to the page underneath. */
   .site-nav.is-open {
+    position: fixed;
+    inset: 0;
     background: var(--mago-stage);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   .site-nav.is-open .frame {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     gap: var(--space-5);
-    padding-bottom: var(--space-7);
+    min-height: 100%;
+    padding-bottom: max(var(--space-7), env(safe-area-inset-bottom));
   }
   .site-nav.is-open .wordmark { grid-row: 1; }
   .site-nav.is-open .nav-toggle {
     grid-row: 1; grid-column: 1;
     justify-self: end;
-    position: absolute;
+    position: fixed;
     top: var(--space-4); right: var(--gutter);
+    z-index: 1;
   }
   .site-nav.is-open .primary {
     flex-direction: column;

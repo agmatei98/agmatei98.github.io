@@ -61,6 +61,18 @@
       var open = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      // Lock page scroll behind the open drawer so it can't scroll through.
+      document.documentElement.classList.toggle('nav-locked', open);
+    });
+    // Close the drawer when a link inside it is tapped.
+    nav.addEventListener('click', function (e) {
+      if (!nav.classList.contains('is-open')) return;
+      var link = e.target.closest && e.target.closest('a');
+      if (!link) return;
+      nav.classList.remove('is-open');
+      document.documentElement.classList.remove('nav-locked');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
     });
   }
 
