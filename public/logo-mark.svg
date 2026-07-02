@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!--
+    Ledgeraa logo mark.
+    Background: bright lavender (primary-500). Glyph: white.
+    Designed at 64×64 with 12px corner radius (~19% of side) to match
+    the iOS-app-icon proportions of the source PNG. Glyph is two
+    organic shapes: a tall stem (the L's vertical) and a leaf-like
+    foot (the horizontal stroke), with a small gap separating them.
+  -->
+  <rect width="64" height="64" rx="14" fill="#7c4dfc"/>
+
+  <!-- Stem of the L (top half) — slight asymmetric scoop on the right edge,
+       gives the glyph its handcrafted feel. -->
+  <path
+    fill="#ffffff"
+    d="M24 14
+       C 24 13.5 24.5 13 25 13
+       L 31 13
+       C 31.5 13 32 13.5 32 14
+       L 32 31
+       C 32 32 31.4 32.6 30.4 32.7
+       L 26.5 33
+       C 25 33.1 24 32 24 30.7
+       Z"
+  />
+
+  <!-- Foot of the L (bottom half) — leaf-shape, flat top-left, curved
+       sweep on the bottom-right. -->
+  <path
+    fill="#ffffff"
+    d="M24 36
+       C 24 35.4 24.4 35 25 35
+       L 38.5 35
+       C 39.6 35 40.4 36 40 37
+       C 38.7 41.5 35.5 47 31 49.5
+       C 28.5 50.8 25.7 51 24.6 50.4
+       C 24.2 50.2 24 49.8 24 49.4
+       Z"
+  />
+</svg>
