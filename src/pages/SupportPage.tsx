@@ -13,6 +13,7 @@ import {
   Grid,
   Illustration,
 } from "@ds/primitives";
+import { HMRC_SELF_ASSESSMENT_URL, FIND_ACCOUNTANT_URL } from "@/config/site";
 
 /**
  * SupportPage (/support) - a few trusted support resources, not documentation.
@@ -32,14 +33,14 @@ const RESOURCES: {
     title: "How does a tax return work?",
     body: "New to Self Assessment? HMRC's own guides walk you through who needs to file, the key dates, and how it all fits together, step by step.",
     ctaLabel: "HMRC Self Assessment guide",
-    href: "https://www.gov.uk/self-assessment-tax-returns",
+    href: HMRC_SELF_ASSESSMENT_URL,
   },
   {
     icon: UserCheck,
     title: "Did I do it right?",
     body: "We're a bookkeeping tool, not accountants. If you're ever unsure about your numbers, it's always worth asking a chartered accountant. You can find one near you through the ICAEW.",
     ctaLabel: "Find a chartered accountant",
-    href: "https://www.icaew.com/about-icaew/find-a-chartered-accountant",
+    href: FIND_ACCOUNTANT_URL,
   },
 ];
 

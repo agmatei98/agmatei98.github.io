@@ -7,7 +7,7 @@
  *
  * Plan data is copied VERBATIM from the app's onboarding source of truth
  * (`ledgeraa_fe/src/pages/onboarding/copy.ts`) so the marketing site can never
- * drift from what a user actually sees on sign-up - EXCEPT the £5 tier's
+ * drift from what a user actually sees on sign-up - EXCEPT the £4.99 tier's
  * display name, which is intentionally rebranded here (see `PLANS`).
  */
 
@@ -26,6 +26,12 @@ export const SIGNIN_URL = `${APP_ORIGIN}/auth/sign-in`;
 /** Support/contact inbox. Single source of truth - Footer and Contact page both use this. */
 export const HELLO_EMAIL = "hello@ledgeraa.com";
 
+/** External resources surfaced in Support + Footer. Keep in one place so they can't drift. */
+export const HMRC_SELF_ASSESSMENT_URL =
+  "https://www.gov.uk/self-assessment-tax-returns";
+export const FIND_ACCOUNTANT_URL =
+  "https://www.icaew.com/about-icaew/find-a-chartered-accountant";
+
 /** Primary nav links (marketing routes are same-origin; app links are absolute). */
 export const NAV_LINKS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/#what-you-get", label: "Features" },
@@ -43,7 +49,7 @@ export interface MarketingPlan {
   id: PlanId;
   /** Display name on the marketing site. */
   name: string;
-  /** "£0" | "£5" | "£8" */
+  /** "£0" | "£4.99" | "£7.99" */
   priceMain: string;
   /** "/mo" - omitted for Free. */
   priceCadence?: string;

@@ -18,7 +18,7 @@ import { SIGNUP_URL, SIGNIN_URL } from "@/config/site";
 const recap = [
   "Free to start, no card, no trial timer",
   "Snap receipts, send invoices, file MTD to HMRC",
-  "HMRC-recognised · your data stays in the UK",
+  "HMRC recognition coming soon · your data stays in the UK",
 ];
 
 export function JoinPage() {

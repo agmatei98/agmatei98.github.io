@@ -331,7 +331,7 @@ function TrustStrip() {
     { icon: LineChart, label: "Get real-time tax estimates" },
   ];
   const rowTwo = [
-    { icon: ShieldCheck, label: "HMRC-recognised" },
+    { icon: ShieldCheck, label: "HMRC recognition coming soon" },
     { icon: FileCheck2, label: "MTD-ready" },
     { icon: MessageCircle, label: "Plain English" },
   ];
