@@ -77,7 +77,14 @@ export function PricingTable({
   );
 }
 
+const COMING_SOON_PREFIX = "Coming Soon: ";
+
 function ComparisonRow({ row, zebra }: { row: CompareRow; zebra: boolean }) {
+  const comingSoon = row.label.startsWith(COMING_SOON_PREFIX);
+  const label = comingSoon
+    ? row.label.slice(COMING_SOON_PREFIX.length)
+    : row.label;
+
   return (
     <tr
       className={cn(
@@ -89,7 +96,14 @@ function ComparisonRow({ row, zebra }: { row: CompareRow; zebra: boolean }) {
         scope="row"
         className="px-5 py-4 text-left text-[15px] font-medium text-[var(--color-ink)]"
       >
-        {row.label}
+        <span className="inline-flex flex-wrap items-center gap-2">
+          {label}
+          {comingSoon && (
+            <span className="inline-flex items-center rounded-full bg-[var(--color-primary-50)] px-2 py-0.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[var(--color-primary-700)] ring-1 ring-[var(--color-primary-100)]">
+              Coming soon
+            </span>
+          )}
+        </span>
       </th>
       <Cell value={row.free} />
       <Cell value={row.standard} featured />

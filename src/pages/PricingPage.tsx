@@ -93,7 +93,9 @@ export function PricingPage() {
             <div className="text-center">
               <Eyebrow withDot>Simple and honest pricing</Eyebrow>
               <Heading level="display-lg" className="mt-6">
-                Everything you need. Always at £4.99 a month.
+                Everything you need.
+                <br />
+                Always at £4.99 a month.
               </Heading>
               <Lede className="mt-5" align="center">
                 No add-ons, no first-year discount that doubles in year two. The
@@ -120,11 +122,11 @@ export function PricingPage() {
           </Container>
         </Section>
 
+        {/* Full comparison table */}
+        <PricingTable eyebrow="Side to side" heading="Compare Plans" />
+
         {/* What's coming next */}
         <ComingSoon />
-
-        {/* Full comparison table */}
-        <PricingTable />
 
         {/* Pricing FAQ */}
         <FaqAccordion
