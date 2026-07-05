@@ -1,4 +1,5 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Landmark, Car, Wallet, UserCheck } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   Nav,
   Footer,
@@ -14,6 +15,9 @@ import {
   Heading,
   Lede,
   Button,
+  Grid,
+  Card,
+  IconCircle,
 } from "@ds/primitives";
 import { SIGNUP_URL } from "@/config/site";
 
@@ -31,9 +35,7 @@ const pricingFaqs: FaqEntry[] = [
     question: "Can I switch plans later?",
     answer: (
       <>
-        Any time, in a couple of taps. Start on Free, move to Standard when
-        Making Tax Digital applies to you, jump to Unlimited if you scan a lot
-        of receipts. Changes take effect straight away.
+        Any time, in a couple of taps. Changes take effect straight away.
       </>
     ),
   },
@@ -51,7 +53,7 @@ const pricingFaqs: FaqEntry[] = [
     answer: (
       <>
         Yes. Full MTD submission to HMRC is included on every paid plan
-        (Standard and Unlimited), with no add-on fees. Ledgeraa is
+        (Standard and Unlimited), with no add-on fees. Ledgeraa is (soon)
         HMRC-recognised software.
       </>
     ),
@@ -89,13 +91,13 @@ export function PricingPage() {
         <Section background="paper" spacing="lg">
           <Container width="narrow">
             <div className="text-center">
-              <Eyebrow withDot>Simple, honest pricing</Eyebrow>
+              <Eyebrow withDot>Simple and honest pricing</Eyebrow>
               <Heading level="display-lg" className="mt-6">
-                Free to start. £5 when tax gets real.
+                Everything you need. Always at £4.99 a month.
               </Heading>
               <Lede className="mt-5" align="center">
-                Three plans, no add-ons, no first-year discount that doubles in
-                year two. The price you see is the price you pay.
+                No add-ons, no first-year discount that doubles in year two. The
+                price you see is the price you pay, always.
               </Lede>
               <div className="mt-8 flex justify-center">
                 <Button
@@ -104,7 +106,7 @@ export function PricingPage() {
                   size="lg"
                   trailing={<ArrowRight className="h-5 w-5" aria-hidden />}
                 >
-                  Start free, no card needed
+                  Start Now
                 </Button>
               </div>
             </div>
@@ -117,6 +119,9 @@ export function PricingPage() {
             <PricingPlans compact />
           </Container>
         </Section>
+
+        {/* What's coming next */}
+        <ComingSoon />
 
         {/* Full comparison table */}
         <PricingTable />
@@ -133,12 +138,12 @@ export function PricingPage() {
           <Container width="narrow">
             <div className="text-center">
               <Heading level="display-lg" as="h2" className="text-white">
-                Start free today.
+                Start today.
               </Heading>
               <p className="mx-auto mt-5 max-w-[36em] text-[length:var(--text-lede)] leading-[var(--text-lede--line-height)] text-[var(--color-primary-200)] text-pretty">
-                Send your first invoice in minutes and let us worry about the
-                tax. Stay free as long as you like, and upgrade only when Making
-                Tax Digital applies to you.
+                Picture it: it's tax return day and you don't need to worry about
+                a thing. We want you to know exactly what you're paying, and
+                exactly what you get for your money.
               </p>
               <div className="mt-9 flex justify-center">
                 <Button
@@ -147,11 +152,12 @@ export function PricingPage() {
                   size="lg"
                   trailing={<ArrowRight className="h-5 w-5" aria-hidden />}
                 >
-                  Create your free account
+                  Create your account
                 </Button>
               </div>
               <p className="mt-4 text-sm text-[var(--color-primary-300)]">
-                No card needed · UK-based · Your data stays in the UK
+                Ledgeraa is a bookkeeping app. We do not provide financial or
+                accounting advice.
               </p>
             </div>
           </Container>
@@ -160,5 +166,73 @@ export function PricingPage() {
 
       <Footer />
     </>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * ComingSoon - the roadmap. Four features on the way, included as they land.
+ * Tinted cards + a "Coming soon" pill so it reads as momentum, not a to-do.
+ * ──────────────────────────────────────────────────────────────────────── */
+const ROADMAP: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: Landmark,
+    title: "Bank connection",
+    body: "Link your account and we'll match transactions to your records automatically. No more manual entry.",
+  },
+  {
+    icon: Car,
+    title: "Mileage tracking",
+    body: "Log business miles as you drive and claim every penny you're owed at tax time.",
+  },
+  {
+    icon: Wallet,
+    title: "Payroll",
+    body: "Pay yourself and any help you take on, with the numbers kept tidy for your return.",
+  },
+  {
+    icon: UserCheck,
+    title: "Accountant access",
+    body: "Give your accountant a read-only window into your books, whenever you need a second pair of eyes.",
+  },
+];
+
+function ComingSoon() {
+  return (
+    <Section background="white" spacing="base">
+      <Container>
+        <div className="mx-auto max-w-[44rem] text-center">
+          <Eyebrow>On the way</Eyebrow>
+          <Heading level="display-md" as="h2" className="mt-5">
+            More coming, at no extra charge.
+          </Heading>
+          <Lede className="mt-4" align="center">
+            We're building the boring admin away, one piece at a time. Every one
+            of these lands on your plan as it's ready. You'll never pay more for
+            what you already have.
+          </Lede>
+        </div>
+
+        <Grid cols={{ base: 1, md: 2, lg: 4 }} gap={5} className="mt-12">
+          {ROADMAP.map(({ icon: Icon, title, body }) => (
+            <Card key={title} variant="tinted" padding="md" interactive className="flex flex-col">
+              <div className="flex items-center justify-between">
+                <IconCircle size={44} tone="lavender">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.9} />
+                </IconCircle>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-primary-700)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.05em] text-white">
+                  Coming soon
+                </span>
+              </div>
+              <h3 className="mt-5 text-[17px] font-bold tracking-[-0.01em] text-[var(--color-ink)]">
+                {title}
+              </h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-ink-muted)]">
+                {body}
+              </p>
+            </Card>
+          ))}
+        </Grid>
+      </Container>
+    </Section>
   );
 }

@@ -19,7 +19,7 @@ export function PricingTable({
   heading?: string;
 }) {
   return (
-    <Section background="canvas-soft" spacing="base">
+    <Section background="white" spacing="base">
       <Container>
         <div className="mx-auto max-w-[44rem] text-center">
           <Eyebrow>{eyebrow}</Eyebrow>

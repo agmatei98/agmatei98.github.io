@@ -8,3 +8,6 @@ dist
 
 # Raw asset library, not used by the built site (74MB)
 Graphic/
+
+# Local dev-server log
+dev.log

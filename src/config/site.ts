@@ -64,9 +64,9 @@ export const PLANS: readonly MarketingPlan[] = [
     id: "free",
     name: "Free",
     priceMain: "£0",
-    tagline: "Send proper invoices for £0, forever.",
+    tagline: "Unlimited invoices and bookkeeping",
     features: [
-      "Unlimited invoices as PDFs",
+      "Unlimited PDF invoices",
       "Manual expense tracking",
       "Export your data any time",
     ],
@@ -76,9 +76,9 @@ export const PLANS: readonly MarketingPlan[] = [
   {
     id: "standard",
     name: "Standard",
-    priceMain: "£5",
+    priceMain: "£4.99",
     priceCadence: "/mo",
-    tagline: "Receipts read for you and MTD sorted, the sweet spot.",
+    tagline: "MTD, receipt scanning, custom invoice templates, and more",
     features: [
       "3 customisable PDF invoice templates",
       "Automated receipt reading, up to 2 scans per expense",
@@ -91,15 +91,16 @@ export const PLANS: readonly MarketingPlan[] = [
   {
     id: "unlimited",
     name: "Unlimited",
-    priceMain: "£8",
+    priceMain: "£7.99",
     priceCadence: "/mo",
     tagline: "Every limit removed, for traders going full throttle.",
     features: [
       "Everything in Standard, plus:",
       "Unlimited receipt scanning",
-      "All invoice templates, fully customisable",
+      "Payroll (coming soon)",
+      "Mileage (coming soon)",
     ],
-    ctaLabel: "Get Unlimited",
+    ctaLabel: "Go Unlimited",
   },
 ] as const;
 
@@ -121,7 +122,7 @@ export const COMPARE_ROWS: readonly CompareRow[] = [
     label: "Invoice templates",
     free: "1 (watermarked)",
     standard: "3, customisable",
-    unlimited: "All, fully customisable",
+    unlimited: "3, customisable",
   },
   { label: "Manual expense tracking", free: true, standard: true, unlimited: true },
   {
@@ -132,5 +133,10 @@ export const COMPARE_ROWS: readonly CompareRow[] = [
   },
   { label: "“Other income” declaration", free: false, standard: true, unlimited: true },
   { label: "Full MTD / HMRC submission", free: false, standard: true, unlimited: true },
+  { label: "Import your data", free: true, standard: true, unlimited: true },
   { label: "Export your data", free: true, standard: true, unlimited: true },
+  { label: "Coming Soon: Mileage", free: false, standard: false, unlimited: true },
+  { label: "Coming Soon: Bank Account Connection", free: false, standard: false, unlimited: true },
+  { label: "Coming Soon: Payroll", free: false, standard: false, unlimited: true },
+  { label: "Coming Soon: Accountant Access", free: false, standard: true, unlimited: true },
 ] as const;

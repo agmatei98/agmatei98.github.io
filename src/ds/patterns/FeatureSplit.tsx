@@ -24,25 +24,32 @@ export function FeatureSplit({
   heading,
   lede,
   bullets,
+  footnote,
   visual,
   orientation = "right",
   background = "canvas",
+  compact = false,
 }: {
   eyebrow?: string;
   heading: string;
   lede?: string;
   bullets?: string[];
+  /** Small muted caveat/disclaimer under the bullets (e.g. a scanning note). */
+  footnote?: string;
   /** The right-half (or left-half) content. Usually a screenshot or PhoneFrame. */
   visual: ReactNode;
   orientation?: "right" | "left";
   background?: "canvas" | "canvas-soft" | "white";
+  /** Tighter vertical rhythm + gap, for stacking many blocks in one section. */
+  compact?: boolean;
 }) {
   return (
-    <Section background={background} spacing="base">
+    <Section background={background} spacing={compact ? "sm" : "base"}>
       <Container>
         <div
           className={cn(
-            "grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16",
+            "grid grid-cols-1 items-center lg:grid-cols-2",
+            compact ? "gap-8 lg:gap-12" : "gap-12 lg:gap-16",
             orientation === "left" && "lg:[&>*:first-child]:order-2"
           )}
         >
@@ -59,7 +66,7 @@ export function FeatureSplit({
             {lede && <Lede className="mt-4">{lede}</Lede>}
 
             {bullets && bullets.length > 0 && (
-              <ul className="mt-7 space-y-3.5">
+              <ul className={cn(compact ? "mt-6" : "mt-7", "space-y-3.5")}>
                 {bullets.map((bullet) => (
                   <li
                     key={bullet}
@@ -76,10 +83,20 @@ export function FeatureSplit({
                 ))}
               </ul>
             )}
+
+            {footnote && (
+              <p className="mt-4 text-[13px] leading-relaxed text-[var(--color-neutral-500)]">
+                {footnote}
+              </p>
+            )}
           </div>
 
-          {/* Visual column */}
-          <div className="flex justify-center lg:justify-end">{visual}</div>
+          {/* Visual column. A fixed-width, centred slot so every block's visual
+              (card mock or phone frame) shares the same footprint and sits the
+              same distance from the copy, on both sides and every breakpoint. */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-[360px]">{visual}</div>
+          </div>
         </div>
       </Container>
     </Section>
