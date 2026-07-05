@@ -93,7 +93,7 @@ export const colors = {
   accent: "#f59e0b",
   // Marketing surfaces (app values)
   canvas: "#faf8fc",
-  canvasCool: "#f1f5f9",
+  canvasCool: "#ffffff", // was slate-100; now pure white - no blue section washes
   canvasSoft: "#f8fafc",
   canvasTinted: "#f3eeff",
   card: "#ffffff",

@@ -1,7 +1,7 @@
 import { ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
 import { cn } from "@ds/cn";
-import { NAV_LINKS, SIGNUP_URL, SIGNIN_URL } from "@/config/site";
+import { NAV_LINKS, SIGNUP_URL, SIGNIN_URL, HELLO_EMAIL } from "@/config/site";
 
 export function Footer() {
   return (
@@ -72,10 +72,10 @@ export function Footer() {
               <li>Built and run by two founders</li>
               <li>
                 <a
-                  href="mailto:hello@ledgeraa.co.uk"
+                  href={`mailto:${HELLO_EMAIL}`}
                   className="text-[var(--color-primary-700)] hover:text-[var(--color-primary-800)]"
                 >
-                  hello@ledgeraa.co.uk
+                  {HELLO_EMAIL}
                 </a>
               </li>
               <li>Your data stays in the UK</li>

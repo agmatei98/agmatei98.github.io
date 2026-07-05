@@ -21,6 +21,7 @@ export { EmailCapture } from "./EmailCapture";
 export { PhoneFrame } from "./PhoneFrame";
 export { ScreenMock } from "./ScreenMock";
 export { IconCircle } from "./IconCircle";
+export { Illustration } from "./Illustration";
 export { Avatar } from "./Avatar";
 export { MetricStat } from "./MetricStat";
 

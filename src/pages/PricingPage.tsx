@@ -18,6 +18,7 @@ import {
   Grid,
   Card,
   IconCircle,
+  Illustration,
 } from "@ds/primitives";
 import { SIGNUP_URL } from "@/config/site";
 
@@ -111,6 +112,10 @@ export function PricingPage() {
                   Start Now
                 </Button>
               </div>
+              <Illustration
+                src="/illustrations/planning.svg"
+                className="mx-auto mt-12 max-w-[260px] md:max-w-[300px]"
+              />
             </div>
           </Container>
         </Section>
@@ -131,7 +136,7 @@ export function PricingPage() {
         {/* Pricing FAQ */}
         <FaqAccordion
           eyebrow="Pricing questions"
-          heading="What people ask before they upgrade."
+          heading="Frequently Asked Questions"
           items={pricingFaqs}
         />
 

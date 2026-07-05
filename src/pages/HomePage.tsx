@@ -30,6 +30,7 @@ import {
   ScreenMock,
   Grid,
   IconCircle,
+  Illustration,
 } from "@ds/primitives";
 import { cn } from "@ds/cn";
 import { SIGNUP_URL, SIGNIN_URL } from "@/config/site";
@@ -161,6 +162,7 @@ export function HomePage() {
             orientation="left"
             background="white"
           />
+          <div id="mtd">
           <FeatureSplit
             compact
             eyebrow="Making Tax Digital"
@@ -179,6 +181,7 @@ export function HomePage() {
             orientation="right"
             background="canvas"
           />
+          </div>
           <FeatureSplit
             compact
             eyebrow="Real-time income logging"
@@ -249,8 +252,14 @@ export function HomePage() {
         {/* ── FAQ ── */}
         <FaqAccordion
           eyebrow="Common questions"
-          heading="The things people ask first."
+          heading="Frequently Asked Questions"
           items={faqs}
+          illustration={
+            <Illustration
+              src="/illustrations/idea.svg"
+              className="max-w-[180px] md:max-w-[200px]"
+            />
+          }
         />
 
         {/* ── Final CTA ── */}
@@ -441,6 +450,10 @@ function EverythingYouNeed() {
             Say goodbye to shoebox receipts. Instead, capture every transaction
             as it happens, whatever the transaction is.
           </Lede>
+          <Illustration
+            src="/illustrations/finance.svg"
+            className="mx-auto mt-10 max-w-[240px] md:max-w-[280px]"
+          />
         </div>
 
         <Grid cols={{ base: 1, md: 2 }} gap={6} className="mt-12">

@@ -14,14 +14,17 @@ export type FaqEntry = {
 
 export function FaqAccordion({
   eyebrow = "Common questions",
-  heading = "The five things people ask first.",
+  heading = "Frequently Asked Questions",
   items,
   background = "canvas-cool",
+  illustration,
 }: {
   eyebrow?: string;
   heading?: string;
   items: FaqEntry[];
   background?: "canvas" | "canvas-cool" | "white";
+  /** Optional decorative art rendered under the header (e.g. an Illustration). */
+  illustration?: ReactNode;
 }) {
   return (
     <Section background={background} spacing="base" bordered>
@@ -31,6 +34,9 @@ export function FaqAccordion({
           <Heading level="display-md" as="h2" className="mt-5">
             {heading}
           </Heading>
+          {illustration && (
+            <div className="mt-8 flex justify-center">{illustration}</div>
+          )}
         </div>
 
         <div>

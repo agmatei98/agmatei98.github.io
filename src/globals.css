@@ -145,7 +145,7 @@
    * cards. We expose those as canvas tokens plus a couple of tinted washes for
    * marketing sections. No warm/lavender cast - cool violet-on-white. */
   --color-canvas: #faf8fc; /* app --background */
-  --color-canvas-cool: #f1f5f9; /* slate-100 - neutral wash */
+  --color-canvas-cool: #ffffff; /* was slate-100; now pure white - no blue section washes */
   --color-canvas-soft: #f8fafc; /* slate-50 - softest wash */
   --color-canvas-tinted: #f3eeff; /* primary-tinted - highlight sections */
   --color-card: #ffffff; /* app --card */

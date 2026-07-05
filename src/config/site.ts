@@ -23,12 +23,16 @@ export const SIGNUP_URL = `${APP_ORIGIN}/auth/sign-up`;
 /** Returning users. */
 export const SIGNIN_URL = `${APP_ORIGIN}/auth/sign-in`;
 
+/** Support/contact inbox. Single source of truth - Footer and Contact page both use this. */
+export const HELLO_EMAIL = "hello@ledgeraa.com";
+
 /** Primary nav links (marketing routes are same-origin; app links are absolute). */
 export const NAV_LINKS: ReadonlyArray<{ href: string; label: string }> = [
-  { href: "/#features", label: "Features" },
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/#what-you-get", label: "Features" },
   { href: "/#mtd", label: "MTD" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
+  { href: "/support", label: "Support" },
 ];
 
 // ─── Plans ───────────────────────────────────────────────────────────────────
