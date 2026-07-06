@@ -138,6 +138,7 @@ export function HomePage() {
               "Professional PDF templates, ready to print and email",
               "Every detail easy to fill, all with plain-English explanations",
               "See at a glance what's been paid and what's still owed",
+              "Set up repeat invoices and watch them appear automatically",
             ]}
             visual={<InvoiceMock />}
             orientation="right"
@@ -152,6 +153,7 @@ export function HomePage() {
               "Details captured automatically from a single photo of your receipt",
               "Just pick the right category and you're ready to submit",
               "Bank connection with automatic transaction matching (coming soon)",
+              "Set recurring expenses once and let them log themselves",
             ]}
             footnote="Always double-check that the captured details match your receipt. Automated scanning can make mistakes."
             visual={

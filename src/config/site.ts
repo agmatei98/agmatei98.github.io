@@ -141,6 +141,7 @@ export const COMPARE_ROWS: readonly CompareRow[] = [
     standard: "Up to 2 / expense",
     unlimited: "Unlimited",
   },
+  { label: "Recurrent Invoices/Expenses", free: false, standard: true, unlimited: true },
   { label: "“Other income” declaration", free: false, standard: true, unlimited: true },
   { label: "Full MTD / HMRC submission", free: false, standard: true, unlimited: true },
   { label: "Import your data", free: true, standard: true, unlimited: true },
