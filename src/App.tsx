@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { PricingPage } from "./pages/PricingPage";
 import { JoinPage } from "./pages/JoinPage";
@@ -9,6 +9,7 @@ import { CookiesPage } from "./pages/CookiesPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { PlaygroundPage } from "./playground/PlaygroundPage";
 import { SectionsPage } from "./playground/SectionsPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import { ScrollToHash } from "./ScrollToHash";
 
 export function App() {
@@ -27,7 +28,7 @@ export function App() {
         {/* Dev-only surfaces */}
         <Route path="/playground" element={<PlaygroundPage />} />
         <Route path="/sections" element={<SectionsPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
