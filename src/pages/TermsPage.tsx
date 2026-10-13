@@ -1,7 +1,7 @@
 import { Nav, Footer } from "@ds/patterns";
 import { Container, Section, Eyebrow, Heading, Lede } from "@ds/primitives";
 
-// ponytail: placeholder — full terms land next.
+// ponytail: placeholder, full terms land next.
 export function TermsPage() {
   return (
     <>

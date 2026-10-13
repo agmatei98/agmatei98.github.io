@@ -107,7 +107,7 @@ export function Footer() {
                 {HELLO_EMAIL}
               </a>
               <br />
-              Your data stays in the UK.
+              Your data stays in the EU.
             </p>
           </div>
 
@@ -154,12 +154,13 @@ export function Footer() {
 
         {/* Disclaimer strip - compliance, plain English. */}
         <p className="mt-12 max-w-[70em] text-[13px] leading-relaxed text-[var(--color-neutral-500)]">
-          Ledgeraa is a bookkeeping tool, not an accountancy or financial-advice
-          service, and nothing here is financial advice. The figures you enter
-          and submit are your responsibility, and we can't guarantee their
-          accuracy. In-app tax estimates are a guide only — always rely on the
-          figure HMRC confirms after you submit. If you're ever unsure, speak to
-          a chartered accountant.
+          Ledgeraa is a bookkeeping app, and only that. It is not an accountancy
+          or financial-advice service, and nothing here or in the app is
+          financial, tax, or accountancy advice. The figures you enter and
+          submit are your responsibility, and we cannot guarantee their
+          accuracy. Any tax estimate in the app is a guide only, so always rely
+          on the figure HMRC confirms after you submit. For advice about your
+          own situation, speak to a qualified accountant.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 border-t border-[var(--color-neutral-200)] pt-6 text-sm text-[var(--color-neutral-500)] sm:flex-row sm:items-center sm:justify-between">

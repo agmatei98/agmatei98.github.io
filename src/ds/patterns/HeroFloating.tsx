@@ -12,7 +12,7 @@ import {
 /**
  * HeroFloating - hero with a "floating" preview card overlapping into
  * the section below. Adds depth without animation. The visual hangs
- * 80–120px below the hero's bottom, so the next section needs `pt-32`
+ * 80 to 120px below the hero's bottom, so the next section needs `pt-32`
  * (or similar) to make room.
  *
  * The pattern handles its own bottom offset, so just compose it normally

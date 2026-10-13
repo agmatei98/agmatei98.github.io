@@ -105,6 +105,13 @@ function HomeScreen() {
         </h2>
       </div>
 
+      {/* Action → outcome: a problem being solved, top of screen */}
+      <div className="rounded-2xl bg-[var(--color-success-50)] p-3 ring-1 ring-[var(--color-success-100)]">
+        <OutcomeRow label="Receipt scanned" done />
+        <OutcomeRow label="Tax estimate updated" done />
+        <OutcomeRow label="Ready for HMRC" done />
+      </div>
+
       {/* Set aside for tax - the hero card */}
       <div className="rounded-2xl bg-white p-4 ring-1 ring-[var(--color-neutral-100)] shadow-sm">
         <div className="flex items-center justify-between">
@@ -151,6 +158,24 @@ function HomeScreen() {
         </span>
         <ChevronRight className="h-4 w-4" strokeWidth={2.5} />
       </button>
+    </div>
+  );
+}
+
+function OutcomeRow({ label, done }: { label: string; done?: boolean }) {
+  return (
+    <div className="flex items-center gap-2 py-0.5">
+      <span className="grid h-4 w-4 flex-shrink-0 place-items-center rounded-full bg-[var(--color-success-600)]">
+        <Check className="h-2.5 w-2.5 text-white" strokeWidth={3.5} />
+      </span>
+      <span className="text-[12px] font-semibold text-[var(--color-success-700)]">
+        {label}
+      </span>
+      {done && (
+        <span className="ml-auto text-[10px] font-bold uppercase tracking-[0.06em] text-[var(--color-success-700)]">
+          Done
+        </span>
+      )}
     </div>
   );
 }

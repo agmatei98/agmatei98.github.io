@@ -39,7 +39,12 @@ export function PricingPlans({
   );
 
   if (compact) {
-    return <div className="mt-12">{cards}</div>;
+    return (
+      <div className="mt-12">
+        {cards}
+        <Reassurance />
+      </div>
+    );
   }
 
   return (
@@ -55,8 +60,28 @@ export function PricingPlans({
           </Lede>
         </div>
         <div className="mt-14">{cards}</div>
+        <Reassurance />
       </Container>
     </Section>
+  );
+}
+
+/** Low-commitment reassurance under the plan cards. */
+function Reassurance() {
+  const items = ["Cancel anytime", "Free migration", "Your data stays in the EU"];
+  return (
+    <ul className="mt-8 flex flex-col items-center justify-center gap-2 text-[14px] font-medium text-[var(--color-ink-muted)] sm:flex-row sm:gap-8">
+      {items.map((item) => (
+        <li key={item} className="inline-flex items-center gap-2">
+          <Check
+            className="h-4 w-4 text-[var(--color-success-600)]"
+            strokeWidth={2.5}
+            aria-hidden
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 

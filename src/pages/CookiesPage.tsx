@@ -1,7 +1,7 @@
 import { Nav, Footer } from "@ds/patterns";
 import { Container, Section, Eyebrow, Heading, Lede } from "@ds/primitives";
 
-// ponytail: placeholder — full cookie policy lands next.
+// ponytail: placeholder, full cookie policy lands next.
 export function CookiesPage() {
   return (
     <>

@@ -41,10 +41,10 @@ export function DataResidency({
               <MapPin className="h-5 w-5" strokeWidth={1.8} />
             </IconCircle>
             <h3 className="mt-4 text-[18px] font-bold tracking-[-0.015em] text-[var(--color-ink)]">
-              Stored in the UK.
+              Stored in the EU.
             </h3>
             <p className="mt-2 text-[15px] text-[var(--color-ink-muted)]">
-              Your records live in UK data centres. Never sent abroad,
+              Your records live in EU data centres, encrypted,
               never sold to anyone, never used to train anything.
             </p>
           </Card>

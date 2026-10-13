@@ -26,7 +26,7 @@ export type BentoCell = {
 };
 
 /**
- * FeatureBento - asymmetric 4–6 cell grid. Linear / Notion / Apple style.
+ * FeatureBento - asymmetric 4 to 6 cell grid. Linear / Notion / Apple style.
  * Cells declare their own size; the grid auto-flows.
  *
  * Visual rule: ONE feature cell per bento (the `tone="feature"` one). It

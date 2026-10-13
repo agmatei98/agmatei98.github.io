@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, Download } from "lucide-react";
 import { cn } from "@ds/cn";
 
 /**
@@ -56,9 +56,10 @@ export function InvoiceMock({ className }: { className?: string }) {
         </span>
       </div>
 
-      {/* Footer chip */}
-      <div className="mt-5 rounded-xl bg-[var(--color-canvas-soft)] px-4 py-2.5 text-center text-[12px] font-medium text-[var(--color-ink-muted)] ring-1 ring-[var(--color-neutral-100)]">
-        Sent as a PDF · Due in 14 days
+      {/* Download action */}
+      <div className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-700)] px-4 py-2.5 text-center text-[13px] font-semibold text-white">
+        <Download className="h-4 w-4" strokeWidth={2.5} />
+        Download PDF
       </div>
     </div>
   );

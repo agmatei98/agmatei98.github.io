@@ -14,7 +14,7 @@ import { cn } from "@ds/cn";
  * Configurable orientation: visual on the right (default) or left.
  *
  * Use when:
- *  - You're explaining ONE feature in depth (3–4 bullets max).
+ *  - You're explaining ONE feature in depth (3 to 4 bullets max).
  *  - The visual is a real screenshot that earns its space.
  *  - Compose multiple FeatureSplits in a column with alternating
  *    orientation for the "Stripe-style" walkthrough effect.

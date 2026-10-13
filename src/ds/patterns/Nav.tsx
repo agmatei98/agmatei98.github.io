@@ -93,7 +93,7 @@ export function Nav({
                   size="sm"
                   trailing={<ArrowRight className="h-4 w-4" aria-hidden />}
                 >
-                  Get started
+                  Log In / Sign Up
                 </Button>
               </div>
               <button
@@ -163,7 +163,7 @@ export function Nav({
               block
               trailing={<ArrowRight className="h-5 w-5" aria-hidden />}
             >
-              Get started
+              Log In / Sign Up
             </Button>
           </div>
         </div>

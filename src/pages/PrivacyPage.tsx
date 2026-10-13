@@ -1,7 +1,7 @@
 import { Nav, Footer } from "@ds/patterns";
 import { Container, Section, Eyebrow, Heading, Lede } from "@ds/primitives";
 
-// ponytail: placeholder — full privacy policy lands next.
+// ponytail: placeholder, full privacy policy lands next.
 export function PrivacyPage() {
   return (
     <>
@@ -16,7 +16,7 @@ export function PrivacyPage() {
               </Heading>
               <Lede className="mt-6" align="center">
                 Our privacy policy is being written up. Check back shortly. Your
-                data stays in the UK, and we never sell it.
+                data stays in the EU, and we never sell it.
               </Lede>
             </div>
           </Container>

@@ -100,7 +100,7 @@ const faqs: FaqEntry[] = [
       <>
         Plenty, and it lands as it's ready, at no extra charge. On the way: a
         bank connection that matches your transactions as they happen, mileage
-        tracking, payroll, and dedicated accountant access. We're building the
+        tracking, and dedicated accountant access. We're building the
         boring admin away, one piece at a time.
       </>
     ),
@@ -109,7 +109,7 @@ const faqs: FaqEntry[] = [
     question: "What happens to my data?",
     answer: (
       <>
-        Your records live in the UK, encrypted, and we never sell them. If you
+        Your records live in the EU, encrypted, and we never sell them. If you
         ever stop paying, you keep read-only access forever. It's yours, not
         ours.
       </>
@@ -152,7 +152,6 @@ export function HomePage() {
             bullets={[
               "Details captured automatically from a single photo of your receipt",
               "Just pick the right category and you're ready to submit",
-              "Bank connection with automatic transaction matching (coming soon)",
               "Set recurring expenses once and let them log themselves",
             ]}
             footnote="Always double-check that the captured details match your receipt. Automated scanning can make mistakes."
@@ -202,10 +201,10 @@ export function HomePage() {
             compact
             eyebrow="Plain English support"
             heading="Never wonder what a box means again."
-            lede="Tax forms love a confusing label. We do not. Every field has a little plain-English note telling you exactly what's expected of you, and where to find it. So you're never stuck, never second-guessing, never Googling a term at 11pm (unless that's your thing)."
+            lede="Tax forms love a confusing label. We do not. Important fields carry a little plain-English note telling you exactly what's expected of you, and where to find it. So you're never stuck, never second-guessing, never Googling a term at 11pm (unless that's your thing)."
             bullets={[
-              "Plain-English hints on every field",
-              "Tells you where to find the answer, not just what it's called",
+              "Plain-English hints on important fields",
+              "Tells you what each box means and where to find the answer",
               "No accountant-speak, no guessing",
             ]}
             visual={<InfoBoxMock />}
@@ -252,6 +251,7 @@ export function HomePage() {
         </Section>
 
         {/* ── FAQ ── */}
+        <div id="faq">
         <FaqAccordion
           eyebrow="Common questions"
           heading="Frequently Asked Questions"
@@ -263,6 +263,7 @@ export function HomePage() {
             />
           }
         />
+        </div>
 
         {/* ── Final CTA ── */}
         <FinalCta />
@@ -283,14 +284,15 @@ function Hero() {
       <Container width="wide">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
-            <Eyebrow withDot>For UK sole traders</Eyebrow>
+            <Eyebrow withDot>Plain English, built for sole traders, not accountants</Eyebrow>
             <Heading level="display-xl" className="mt-6">
               We mind your tax. You mind your business.
             </Heading>
             <Lede className="mt-6">
-              Everything you need as a sole trader. Nothing else.
+              Bookkeeping in plain English, with everything a sole trader needs
+              and not an ounce more.
               <br />
-              Always plain English. <strong>Always £4.99 a month.</strong>
+              <strong>Always £4.99 a month.</strong>
             </Lede>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -334,8 +336,8 @@ function TrustStrip() {
   ];
   const rowTwo = [
     { icon: ShieldCheck, label: "HMRC recognition coming soon" },
-    { icon: FileCheck2, label: "MTD-ready" },
-    { icon: MessageCircle, label: "Plain English" },
+    { icon: FileCheck2, label: "Made for Making Tax Digital" },
+    { icon: MessageCircle, label: "Your data stays in the EU" },
   ];
   const renderRow = (items: { icon: LucideIcon; label: string }[]) => (
     <ul className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
@@ -360,6 +362,11 @@ function TrustStrip() {
         <div className="flex flex-col items-center gap-4 py-6">
           {renderRow(rowOne)}
           {renderRow(rowTwo)}
+          <p className="mt-1 max-w-[46rem] text-center text-[13px] leading-relaxed text-[var(--color-neutral-500)]">
+            Ledgeraa is a bookkeeping app, and only that. It does not give
+            financial, tax, or accountancy advice. For advice about your own
+            situation, speak to a qualified accountant.
+          </p>
         </div>
       </Container>
     </Section>
@@ -504,7 +511,7 @@ function FinalCta() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-[var(--color-primary-300)]">
-            UK-based · Your data stays in the UK
+            UK-based · Your data stays in the EU
           </p>
         </div>
       </Container>

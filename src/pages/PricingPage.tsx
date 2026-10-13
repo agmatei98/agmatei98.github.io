@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, Car, Wallet, UserCheck } from "lucide-react";
+import { ArrowRight, Landmark, Car, UserCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
   Nav,
@@ -53,9 +53,9 @@ const pricingFaqs: FaqEntry[] = [
     question: "Is Making Tax Digital included?",
     answer: (
       <>
-        Yes. Full MTD submission to HMRC is included on every paid plan
-        (Standard and Unlimited), with no add-on fees. Ledgeraa is (soon)
-        HMRC-recognised software.
+        Full MTD submission to HMRC is included on the Standard and Unlimited
+        plans, with no add-on fees. It is not part of the Free plan. Ledgeraa is
+        (soon) HMRC-recognised software.
       </>
     ),
   },
@@ -64,9 +64,10 @@ const pricingFaqs: FaqEntry[] = [
     answer: (
       <>
         No. What's on the way (a bank connection that matches your transactions,
-        mileage tracking, payroll, and accountant access) lands on your plan as
+        mileage tracking, and accountant access) lands on your plan as
         it's ready, at no extra charge. The price you signed up at is the price
-        you keep.
+        you keep. If we ever do change the price, we'll give you at least two
+        months' notice first.
       </>
     ),
   },
@@ -190,11 +191,6 @@ const ROADMAP: { icon: LucideIcon; title: string; body: string }[] = [
     icon: Car,
     title: "Mileage tracking",
     body: "Log business miles as you drive and claim every penny you're owed at tax time.",
-  },
-  {
-    icon: Wallet,
-    title: "Payroll",
-    body: "Pay yourself and any help you take on, with the numbers kept tidy for your return.",
   },
   {
     icon: UserCheck,

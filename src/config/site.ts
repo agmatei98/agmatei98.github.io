@@ -32,13 +32,12 @@ export const HMRC_SELF_ASSESSMENT_URL =
 export const FIND_ACCOUNTANT_URL =
   "https://www.icaew.com/about-icaew/find-a-chartered-accountant";
 
-/** Primary nav links (marketing routes are same-origin; app links are absolute). */
+/** Primary nav links (marketing routes are same-origin; app links are absolute).
+ *  Contact + Support live in the footer; the top nav stays lean. */
 export const NAV_LINKS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/#what-you-get", label: "Features" },
-  { href: "/#mtd", label: "MTD" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
-  { href: "/support", label: "Support" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 // ─── Plans ───────────────────────────────────────────────────────────────────
@@ -107,7 +106,7 @@ export const PLANS: readonly MarketingPlan[] = [
     features: [
       "Everything in Standard, plus:",
       "Unlimited receipt scanning",
-      "Payroll (coming soon)",
+      "VAT support for VAT-registered sole traders",
       "Mileage (coming soon)",
     ],
     ctaLabel: "Go Unlimited",
@@ -144,10 +143,10 @@ export const COMPARE_ROWS: readonly CompareRow[] = [
   { label: "Recurrent Invoices/Expenses", free: false, standard: true, unlimited: true },
   { label: "“Other income” declaration", free: false, standard: true, unlimited: true },
   { label: "Full MTD / HMRC submission", free: false, standard: true, unlimited: true },
+  { label: "VAT (for VAT-registered sole traders)", free: false, standard: false, unlimited: true },
   { label: "Import your data", free: true, standard: true, unlimited: true },
   { label: "Export your data", free: true, standard: true, unlimited: true },
   { label: "Coming Soon: Mileage", free: false, standard: false, unlimited: true },
   { label: "Coming Soon: Bank Account Connection", free: false, standard: false, unlimited: true },
-  { label: "Coming Soon: Payroll", free: false, standard: false, unlimited: true },
   { label: "Coming Soon: Accountant Access", free: false, standard: true, unlimited: true },
 ] as const;
